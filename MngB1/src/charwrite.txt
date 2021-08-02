@@ -1,0 +1,1 @@
+This is write operation with the help of char stream 
