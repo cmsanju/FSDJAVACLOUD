@@ -11,35 +11,39 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-@WebServlet("/Login")
-public class Login extends HttpServlet {
+@WebServlet("/Register")
+public class Register extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-   
+    
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+	
 		response.setContentType("text/html");
 		
 		PrintWriter out = response.getWriter();
 		
+		String name = request.getParameter("fname");
 		String user = request.getParameter("user");
 		String pass = request.getParameter("pwd");
 		
-		if(user.equals("admin") && pass.equals("admin"))
+		if(pass.equals("admin"))
 		{
-			//out.println("login success...");
-			RequestDispatcher rd = request.getRequestDispatcher("success.html");
+			out.println("Registraion success....");
+			
+			out.println("Name : "+name+" User : "+user+" Password : "+pass);
+			
+			//RequestDispatcher rd = request.getRequestDispatcher("login.html");
 			
 			//rd.forward(request, response);
 			
-			response.sendRedirect("https://www.google.com/");
+			response.sendRedirect("login.html");
+		
 		}
 		else
 		{
-			out.println("<font color = 'red'>login failed.</font>");
+			out.println("<font color = 'red'>Registration failed.</font>");
 			
-			RequestDispatcher rd = request.getRequestDispatcher("login.html");
-			
+			RequestDispatcher rd = request.getRequestDispatcher("register.html");
 			rd.include(request, response);
 		}
 	}
