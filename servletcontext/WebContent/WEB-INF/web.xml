@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+  <display-name>servletcontext</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  
+  <servlet>
+  		<servlet-name>s1</servlet-name>
+  		<servlet-class>com.test.Servlet1</servlet-class>
+  		<load-on-startup>1</load-on-startup>
+  </servlet>
+  
+  <context-param>
+  		<param-name>city</param-name>
+  		<param-value>MPL</param-value>
+  </context-param>
+  <context-param>
+  		<param-name>state</param-name>
+  		<param-value>KA</param-value>
+  </context-param>
+  
+  
+  <servlet-mapping>
+  		<servlet-name>s1</servlet-name>
+  		<url-pattern>/context</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  		<servlet-name>s2</servlet-name>
+  		<servlet-class>com.test.Servlet1</servlet-class>
+  	
+  	<init-param>
+  		<param-name>user</param-name>
+  		<param-value>admin</param-value>
+  	</init-param>
+  	
+  	<init-param>
+  		<param-name>pwd</param-name>
+  		<param-value>admin</param-value>
+  	</init-param>
+  
+  </servlet>
+  
+  <servlet-mapping>
+  		<servlet-name>s2</servlet-name>
+  		<url-pattern>/config</url-pattern>
+  </servlet-mapping>
+  
+</web-app>
