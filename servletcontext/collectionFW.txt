@@ -1,0 +1,642 @@
+Collection frameworks: (java.util.*)
+=====================
+The aim of collection framework is to build high performance based apps.
+	In other words collection framework is the one of the additional service developed by sunmicro systems developers available as a part of java software and whose role is to provide high performance to the java based apps.
+
+Goals of collection frameworks:
+===============================
+1. Collection framework improves the performance of JAVA, J2EE projects (when we want to transfer the bulk amount of data from client to server and server to client using collection framework we can transfer that entire data at a time).
+2. Collection framework allows us to prove similar or dissimilar type of objects. 
+3. Collection framework is dynamic in nature i.e., they are extends (arrays contains the size which is fixed in nature and they allows similar type of data).
+4. Collection framework contains adaptability feature (adaptability is the process of adding one collection object at the end of another collection object).
+5. Collection framework is algorithmic oriented (collection framework contains various sorting and searching techniques of data structures as a predefined concepts).
+6. In order to deal with collection framework we must import a package called java.util.* package.
+Collection framework is divided into two categories. 
+They are new collection framework and legacy (old) collection framework.
+
+Definition of collection framework:
+==================================
+A Collection framework is one of the standardized mechanism. and it will allowses to group multiple values either of same type or different type or both the types in a single variable with dynamic size this single variable is called collection framework variable.
+
+Q. what are the difference between arrays and collection framework.
+
+New collection framework:
+========================
+Revised form of existing data structures is known as new CFW.
+new CFW contains two types they are 
+	a.1D collection framework
+	b.2D collection framework
+
+One dimensional collection framework:
+====================================
+A one dimensional collection framework is one in which the data is organized either in the form of row or in the form of column by containing similar or dissimilar categories of objects into a single object. This single object is known as one dimensional collection framework object. One dimensional collection framework contains one dimensional collection framework interfaces and  	
+ one dimensional collection framework classes. the classes and interfaces are available in java.util.* package.
+
+1D CFW interfaces:
+=================
+java.util.Collection:
+====================
+	Collection is an interface whose object allows us to organize similar or different type of objects into single object. The Collection interface is having the following features:
+ i) It is available at the top of the hierarchy of all the interfaces which are available in the collection framework.
+ ii) An object of Collection allows us to add duplicate elements.
+ iii) Collection object always displays the data in forward direction only.
+ iv) Collection object will print the data on the console in random order.
+ v) Collection object always allows us to  insert an element at end only i.e., we cannot insert an element at the specific position. 
+
+2.java.util.List:
+=================
+i) List is the sub-interface of java.util.Collection interface.
+ii) List object also allows us to add duplicates.
+iii) List object automatically displays the data in sorted order.
+iv) List object allows us to add an element either at the ending position or at specific position.
+v) List object allows us to retrieve the data in forward direction, backward direction and random retrieval. 
+
+3.java.util.Set:
+================
+i) Set is the sub-interface of java.util.Collection interface. 
+ii) An object of Set does not allows duplicates i.e., all the elements in the set must be distinct (unique). 
+iii) Set object always displays the data in random order. 
+iv) Set object allows us to add the elements only at ending position. 
+v) Set object allows us to retrieve the data only in forward direction. 
+
+4.java.util.SortedSet:
+=====================
+i) SortedSet is the sub-interface of java.util.Set interface. 
+ii) SortedSet object does not allows duplicates. 
+iii) SortedSet object will displays the data automatically in sorted order. 
+iv) SortedSet object allows us to add the elements only at ending position. 
+v) SortedSet object allows us to retrieve data in forward and backward directions. 
+
+note: the objects of collection and set are called single direction because they retreive data only in forward direction.
+	
+	the objects of List and SortedSet are called multi directional objects because they allows us to retreive data in all the directions forward, backward and random directions.
+=====
+
+Heirarchy chart:
+================
+Differences:
+=============
+1D collection framework process:
+===============================
+1.Grouping / assembling phase
+2.Ungrouping / de-assembling phase.
+
+Methods in Collection interface:
+===============================
+1. public int size (): 
+This method is used for determining the number of elements in Collection interface object. 
+2. public boolean add (java.lang.Object): This method is used for adding an object to Collection object. When we use this method to add the object to Collection objects and List object, this method always returns true. Since, Collection object and List object allows duplicates. When we apply the same method with Set and SortedSet methods and when we are trying to add duplicates, this method returns false. 
+ 
+NOTE: 
+Whatever the data we want to add through collection framework object that fundamental data must be converted into the corresponding wrapper class object and all the objects of wrapper classes are treated as objects of java.lang.Object class. 
+
+3. public boolean addAll (Collection):  This method is used for adding the entire collection object at the end of another Collection object. As long as we apply this method with List and Collection interfaces, it returns true. Since, they allow duplicates. When we apply this method with Set and SortedSet, this method may return false. Since, duplicates are not allowed. 
+ 
+NOTE:  Collection framework is nothing but assembling different or similar type of objects and dissembling similar or different type of objects and it is shown in the following diagrammatic representation.
+
+4. public boolean isEmpty ():  Returns true when there are no object found in Collection interface object otherwise return false. 
+ 
+5. public Object [] toArray ():  This method is used for extracting the data from Collection objects of java.lang.Object class. 
+For example:
+=========== 
+int s=0; 
+Object obj []=s.toArray (); 
+for (int i=0; i<obj.length; i++) 
+{
+  Interger io= (Integer) obj [i];
+  int x=io.intValue ();
+  s=s+x; 
+}
+ System.out.println (“Sum = ”+s);
+6. public Iterator iterator ():  
+This method is used for extracting the data from Collection framework object.
+For example:
+ Iterator itr=co.iterator ();
+ Int s = 0;
+While (itr.hasNext ()) 
+{
+  Object obj = itr.next();
+  Integer io = (Integer) obj;
+  int x = io.intValue ();
+  s = s + x;
+}
+Iterator interface:
+===================
+Iterator is an interface which always uses the extract the data from any Collection object.
+
+Methods in Iterator interface: 
+1. public boolean hasNext() 
+2. public Object next() 
+3. public Object remove() 
+
+Method 1 is used for checking whether we have next element or not. If next element available in Collection object it returns true otherwise it returns false. Method 2 is used for obtaining the next element in the Collection object. Method 3 is used for removing the element from Collection object. Methods 2 and 3 can be used as long as method 1 returns true.
+
+
+List:
+===== 
+List is an interface which extends Collection.
+
+Methods in List interface: 
+1. public Object get (int):
+==========================
+This method is used for obtaining that element from the specified position. If the get method is not returning any value because of invalid position the value of object of object is NULL. 
+2. public Object remove (int):
+=============================
+This method is used for removing the objects from List object based on position. 
+3. public Object remove (Object):
+================================ 
+This method is used for removing the objects from List object based on content. 
+4. Public void add (int pos, Object): 
+====================================
+This method is used for adding an object at the specified position. 
+5. public void addAll (int pos, Collection): 
+===========================================
+This method is used for adding one Collection object to another Collection object at the specified position. 
+6. public List headList (Object obj):
+=====================================
+This method is used for obtaining those objects Xi’s which are less than or equal to target object (Xi=obj). 
+7. public List tailList (Object obj):
+====================================
+This method is used for obtaining those objects Xi’s which are greater than target object (Xi>obj or Xi=(obj-1)). 
+8. public List subList(Object obj1, Object obj2):
+===============================================
+ This method is used for obtaining those values which are a part of List i.e., range of values [or] In subList method is select those values Xi’s which are less than or equal to object 1 and greater than object 2 (obj1=Xi<obj2).
+ 
+9. public ListIterator listIterator():
+=====================================
+ This method is used for extracting the data from List object either in forward or in backward or in both the directions. ListIterator is an interface which extends Iterator interface. This interface contains the following methods: 
+1.public boolean hasPrevious (); 
+2. public Object previous (); 
+3. public void set (Object); 
+
+All the methods of iterator are also coming. Method-1 is used for checking weather we have previous element or not, this method returns true as long as we have previous elements otherwise false.
+Method-2 is used for obtaining previous element 
+Method-3  is used for modifying the existing Collection object returns true. Methods 2 and 3 can be used as long as method-1 returns true.
+
+One dimentional collection framework classes:
+interfaces:		classes:
+===========		=========
+Collection   	AbstractCollection implements                 Collection
+List		AbstractList extends                 AbstractCollection implements 				List
+Set		AbstractSet extends 		AbstractCollection implements 				Set
+SortedSet 	AbstractSequentialList extends 		AbstractList implements SortedSet
+
+LinkedList extends AbstractSequential
+ArrayList extends AbstractList
+HashSet extends AbstractSet
+TreeSet extends AbstractSet
+	
+	Collection framework classes contains the definition for those methods which are coming from Collection interfaces i.e., all Collection interface methods defined in collection classes AbstractCollection implements Collection, AbstractList extends AbstractCollection implements List AbstractSet extends AbstractCollection implements Set, AbstractSequentialList extends AbstractList implements SortedSet etc.
+
+	The classes AbstractCollection implements Collection, AbstractList extends AbstractCollection implements List, AbstractSet extends AbstractCollection implements Set and AbstractSequentialList extends AbstractList implements SortedSet are abstract classes we never  make use of them as a part of real time applications but we make use of the classes LinkedList extends AbstractSequential, 
+ArrayList extends AbstractList, 
+HashSet extends AbstractSet and
+TreeSet extends AbstractSet.
+
+java.util.List:
+===============
+LinkedList is the concrete subclass of collection classes. LinkedList object allows us to group similar or dissimilar type of objects. Creating a LinkedList is nothing but creating an object of java.util.LinkedList class.  The data is organized in LinkedList in the form of nodes. The node contains two parts, they
+are data part and address part.
+	
+	Data part always gives the actual data which we want to represent. address part represents address of the next node. for the last node in the LinkedList the address part must be null which indicates end of the LinkedList.
+
+Important points LinkedList:
+============================
+A LinkedList is a Collection of nodes.
+LinkedList class is not Synchronized.
+LinkedList class can contain duplicate elements.
+
+Constructor of LinkedList:
+==========================
+LinkedList():
+============
+ is used for creating an object of LinkedList without specifying any number of nodes.
+LinkedList(int): is used for creating an object of ll by specifying the initial number of nodes to be created.
+Syntax:
+======
+LinkedList ll=new LinkedList();
+
+Here ll represent object name and it can be treated as Collection framework variable and it allows us to store multiple values either of same type or different type or both the types.
+
+Methods of LinkedList:
+======================
+public void addFirst(Object): 
+=============================
+are used for adding the elements at first position of LinkedList.
+
+public void addLast(Object):
+===========================
+are used for adding the elements at last position of LinkedList.
+public Object getFirst():
+======================== 
+are used for get first position elements of LinkedList.
+public Object getLast():
+=======================
+are used for get last position elements of LinkedList.
+
+public Object removeFirst():
+============================
+are used for remove first position elements of LinkedList.
+
+public Object removeLast():
+===========================
+are used for remove last position elements of LinkedList.
+
+Advantages of LinkedList:
+=========================
+LinkedList class object allows us to organize the data and it may belong to both homogeneous or heterogeneous elements.
+LinkedList class object contains dynamic size in nature.
+LinkedList class object allows us to insert the data either in the beginning or in the ending or in the middle (dynamic insertion are allowed).
+
+Limitations of LinkedList:
+==========================
+1.LinkedList class object takes more memory space (explicitly) memory space is created for Data part and Address part in heap memory.
+2.LinkedList class object takes more retrieval time(after processing data of the current node,to process the data of next node,internally JVM will reterive address of next node from address part of current node which is one of the time consuming process.).
+
+Less performance:
+=================
+To avoid the problems of LinkedList we use the concept of ArrayList. Because ArrayList class developed by Sun developers by making use of associative memory.
+
+Note: If we store anything in associative memory which will take negligible amount of space and if we retrieve anything from associative memory than it will take negligible amount of time.
+LinkedList organize the data in the form of nodes.
+
+Two dimensional framework or maps:
+==================================
+ Two dimensional framework organize the data in the form of (key,value) pair. The value of key is an object and they must be unique. The value of value is also an object which may or may not be unique. Two dimensional framework contains collection of interfaces and collection of classes which are also known as map interfaces and map classes. 
+ 
+Map interfaces:
+===============  
+In maps we have three essential interfaces; 
+they are java.util.Map, java.util.Map.Entry and java.util.SortedMap 
+ 
+java.util.Map:
+==============  
+java.util.Map extends Collection. An object of Map allows to organize the data in the form of (key, value) pair. Here key and value must be objects. An object of Map allows displaying the data in that order in which order we have added the data. 
+ 
+Methods:
+======== 
+public boolean put (Object kobj, Object vobj):
+============================================  This method is used for adding the data in the form of (key, value). This method returns false when we are trying to add duplicate key and values. This method returns true as long as we enter unique key objects. 
+
+public boolean putAll (Map):
+============================
+This method is used for adding one Map object at the end of another Map object. 
+public Set entrySet ():
+======================
+This method is used for getting all the keys from map objects.
+public Object get (Object vobj): 
+================================
+This method is used for obtaining value of value by passing value of key object. 
+public void remove (Object kobj):
+================================
+This method is used for removing the entire map entry the value of key object. 
+
+NOTE:  The following diagram gives an idea about how to organize the data in the form of (key, value) and how to retrieve the data from Map object.
+ 
+java.util.Map.Entry:  
+====================
+Here Map is an interface and Entry i for retrieving the data separately in the form of key object and value object from the Map object.
+
+Methods: 
+1.public Object getKey (); 
+2.public Object getValue (); 
+  Method 1 and 2 is used for obtaining key object and value object separately. 
+ 
+java.util.SortedMap:
+==================== 
+SortedMap extends Map. An object of SortedMap displays the data by default in sorted order. 
+ 
+Methods:
+========
+public Object first (); 
+public Object last (); 
+public SortedSet headMap(Object kobj); xi <= kobj public SortedSet tailMap (Object kobj); xi > kobj public SortedSet subMap (Object kobj1, Object kobj2); kobj1 <= xi < kobj2 
+ 
+Map classes:  
+===========
+Map classes contains all the definitions for the abstract methods of Map interface. 
+In java.util.* package we have the following Map classes and whose hierarchy is given below: 
+1. AbstractMap implements Map 
+2. AbstractSortedMap extends AbstractMap implements SortedMap 
+3. HashMap extends AbstractMap 
+4. TreeMap extends AbstractSortedMap 
+ 
+Legacy collection Frame work:
+=============================
+When SUN Micro Systems has developed java,
+collection framework was known as data structures.
+Data structures in java were unable to meet industry
+requirements at that time. Hence data structures of
+java was reengineered and they have added ‘n’ number
+of classes and interfaces and in later stages the data
+structures of java is known as new collection framework
+we have one interface and classes
+
+Interface:  
+=========
+We have only one interface, 
+namely java.util.Enumeration. This interface is
+used for extracting the data from legacy collection
+framework classes. 
+
+What is the difference between normal collection
+framework and legacy collection framework?
+
+Answer: All the classes in the normal collection
+framework are by default belongs to nonsynchronized
+classes whereas all classes in legacy collection
+framework are by default belongs to synchronized
+classes. 
+
+Vector:  Its functionality is exactly similar to
+ArrayList but Vector class belongs to synchronized
+whereas ArrayList belongs to non-synchronized class.
+Creating a Vector is nothing but creating an object
+of java.util.Vector class. 
+
+Constructors:
+============
+Vector ();
+Vector (int size);  
+ 
+Instance methods: 
+=================
+3 public int size ();
+4 public void addItem (Object obj); [old] 
+5 public void addElement (Object obj); [new]
+6 public void addItem (int pos, Object obj);
+7 public void addElement (int pos, Object obj);
+8 public Object getItem (int pos);
+9 public  void remove (int pos);
+10 public void remove (Object obj );
+11 public void removeAll ();
+12 public Enumeration elements ();
+  The methods 4,5,6 and 7 are used for adding an
+  object to the vector either at end or at specified
+  position. Method-12 is used for extracting the data
+  from vector object. 
+  
+  Enumeration en=v.elements (); 
+  While (en.hasMoreElements ())
+  {  
+  Object obj=en.nextElement ();
+  System.out.println (obj); 
+  } 
+ 
+ Methods in Enumeration:
+ =======================
+ method public boolean hasMoreElements ();
+ public Object nextElement ();
+  
+Stack: 
+======
+Stack is the sub-class of Vector class.
+The basic working principal of Stack is
+Last In First Out(LIFO).
+ 
+Stack API: 
+Constructors: 
+Stack (); 
+Stack (int size); 
+ 
+Instance methods: 
+public boolean empty (); 
+public void push (Object); 
+public Object pop (); 
+public Object peek (); 
+ 
+ 
+ 
+Write a java program which listed the concept of Vector?
+
+public static void main (String [] args) 
+{
+Vector v = new Vector (); 
+v.addElement (new Integer (10));
+v.addElement (new Float (100.37f)); 
+v.addElement (new Boolean (true)); 
+v.addElement ("K.V.R"); 
+System.out.println ("SIZE = "+v.size ()); 
+System.out.println ("CONTENTS = "+v); 
+Enumeration en=v.elements ();
+while (en.hasMoreElements ()) 
+Object val=en.nextElement (); 
+System.out.println (val); 
+
+Methods in Enumeration method:
+1.public boolean hasMoreElements (); 
+2 public Object nextElement (); 
+2 1 is used for checking weather we have next
+elements or not. This method returns false when
+we have next element otherwise it returns false.
+Method-2 is used for obtaining next 2 can be used
+as long as method-1 returns true .
+
+Dictionary:  
+Dictionary is an abstract class, whose object allows
+to retrieve to store the data in the
+form of (key, value) pair.
+An object of Dictionary never allows duplicate
+values as key objects and null values
+
+Hashtable:
+=========
+Hashtable is the concrete sub-class 
+of duplicates and where object allows us to store
+in the form of (key, value) pair. Hashtable object
+organizes its data by following hashing mechanism.
+We cannot determine in which order the Hashtable
+displays its data.
+
+Hashtable API: 
+Constructor: 
+Hashtable (); 
+
+Instance methods: 
+================
+public boolean put (Object kobj, Object vobj);
+public void remove (Object kobj); 
+public Object get (Object kobj); 
+public Enumeration keys (); 
+Method-1 is used for obtaining value object 
+by passing key object. If the key object is not 
+found then the value object is null. 
+Method-2 is used for extracting key objects 
+from Hashtable.
+
+Properties class:
+================
+Properties is the sub-class of Hashtable class.
+Properties class object is used for reading of
+maintaining system environmental variables and
+reading the data from resource data file or 
+properties file. 
+
+Properties API: 
+Constructor: 
+Properties (); 
+
+Instance Methods: 
+public void setProperty (Object kobj, Object vobj);
+public Object getProperty (Object kobj); 
+public void load (InputStream); 
+*****************************************************************
+Serialization and Deserialization in Java:
+=========================================
+Serialization is a process of converting an object into a sequence of bytes which can be persisted to a disk or database or can be sent through streams. The reverse process of creating object from sequence of bytes is called deserialization.
+
+Use of serialization in Java:
+============================
+Serialization in Java allows us to convert an Object to stream that we can send over the network or save it as file or store in DB for later usage. Deserialization is the process of converting Object stream to actual Java Object to be used in our program.
+
+Stream:
+=======
+The flow of data between main memory and secondary memory in the form of bytes and bits is known as a stream.
+1.byte stream  2. character stream.
+
+InPutStream - The InputStream is used to read data from a source.
+
+OutPutStream - The OutputStream is used for writing data to a destination.
+
+Byte Streams:
+Java byte streams are used to perform input and output of 8-bit bytes. Though there are many classes related to byte streams but the most frequently used classes are, FileInputStream and FileOutputStream. Following is an example which makes use of these two classes to copy an input file into an output file -
+
+Example:
+
+Character Streams:
+Java Byte streams are used to perform input and output of 8-bit bytes, whereas Java Character streams are used to perform input and output for 16-bit unicode. 
+fig:
+classes are FileWriter and FileReader 
+
+FileOutputStream:
+=================
+FileOutputStream is used to create a file and write data into it. The stream would create a file, if it doesn't already exist, before opening it for output.
+
+Here are two constructors which can be used to create a FileOutputStream object.
+
+Following constructor takes a file name as a string to create an input stream object to write the file -
+
+OutputStream f = new FileOutputStream("C:/java/hello") 
+
+Serializing an Object:
+The ObjectOutputStream class is used to serialize an Object.
+The class must implement the java.io.Serializable interface.
+
+All of the fields in the class must be serializable. If a field is not serializable, it must be marked transient.
+
+Deserializing an Object: 
+opposit of serializination 
+
+BufferedInputStream:
+===================
+1.BufferedInputStream is buffered.
+2.BufferedInputStream reads bytes from another InputStream (Eg - FileInputStream)
+
+So, BufferedInputStream is wrapper formed on FileInputStream.
+
+FileInputStream fis = new FileInputStream("c:/myFile.txt");
+
+BufferedInputStream bis = new BufferedInputStream(fis);
+
+3.when BufferedInputStream.read() is called mostly data is read from the buffer.
+
+When data is not available available in buffer a call is made to read system file and lot of bytes are kept in buffer.
+
+BufferedInputStream.readLine() method reads whole line and keep it in buffer.
+4.A BufferedInputStream enables another input stream to buffer the input and supports the mark and reset methods.
+An internal buffer array is created when the BufferedInputStream is created. 
+As bytes from the stream are read or skipped, the internal buffer is refilled as necessary from the contained input stream, many bytes at a time.
+
+5.BufferedInputStream is much faster as compared to FileInputStream.
+
+6.Example
+As we discussed above that when BufferedInputStream.read() is called mostly data is read from the buffer. 
+A BufferedInputStream reads from FileInputStream, will request lot of data from the FileInputStream (128 bytes or so… not exact figure). Thus only 2 calls will be made for reading 256 bytes from file. 
+
+7.Another Example - Real world Example - You must have seen youtube videos where video is buffered before you actually start watching it, buffering overall improves your video watching experience.
+
+FileInputStream:
+==================
+1.FileInputStream is not buffered.
+
+2.FileInputStream reads bytes from a file.
+
+FileInputStream fis = new FileInputStream("c:/myFile.txt");
+
+3.Every time FileInputStream.read() is called a call is made to read a system file.
+
+FileInputStream.read()
+reads 1 byte (8-bit) at a time.
+4.A FileInputStream obtains input bytes from a file in a file system.
+And does not supports mark and reset methods.
+5.FileInputStream is slower as compared to BufferedInputStream.
+6.Example - 
+As we discussed in point above that every time FileInputStream.read() is called a call is made to read a system file.
+
+A FileInputStream will make 256 calls for reading 256 bytes from file. 
+7.No buffering will make your videos watching experience a nightmare.
+
+Brief Introduction to Garbage Collection:
+=========================================
+From the name, it looks like Garbage Collection deals with finding and deleting the garbage from memory. However, in reality, Garbage Collection tracks each and every object available in the JVM heap space and removes unused ones.
+
+In simple words, GC works in two simple steps known as Mark and Sweep
+
+Mark: – it is where the garbage collector identifies which pieces of memory are in use and which are not
+Sweep: – this step removes objects identified during the “mark” phase
+
+Advantages:
+No manual memory allocation/deallocation handling because unused memory space is automatically handled by GC
+No overhead of handling Dangling Pointer
+Automatic Memory Leak management (GC on its own can’t guarantee the full proof solution to memory leaking, however, it takes care of a good portion of it)
+
+Disadvantages:
+Since JVM has to keep track of object reference creation/deletion, this activity requires more CPU power besides the original application. It may affect the performance of requests which required large memory
+Programmers have no control over the scheduling of CPU time dedicated to freeing objects that are no longer needed
+Using some GC implementations might result in application stopping unpredictably
+Automatized memory management will not be as efficient as the proper manual memory allocation/deallocation
+
+GC Implementations:
+===================
+JVM has four types of GC implementations:
+
+Serial Garbage Collector
+Parallel Garbage Collector
+CMS Garbage Collector
+G1 Garbage Collector
+
+1. Serial Garbage Collector:
+============================
+Serial garbage collector works by holding all the application threads. It is designed for the single-threaded environments. It uses just a single thread for garbage collection. The way it works by freezing all the application threads while doing garbage collection may not be suitable for a server environment. It is best suited for simple command-line programs.
+
+Turn on the -XX:+UseSerialGC JVM argument to use the serial garbage collector.
+
+2. Parallel Garbage Collector:
+=============================
+Parallel garbage collector is also called as throughput collector. It is the default garbage collector of the JVM. Unlike serial garbage collector, this uses multiple threads for garbage collection. Similar to serial garbage collector this also freezes all the application threads while performing garbage collection.
+
+3. CMS Garbage Collector:
+=========================
+Concurrent Mark Sweep (CMS) garbage collector uses multiple threads to scan the heap memory to mark instances for eviction and then sweep the marked instances. CMS garbage collector holds all the application threads in the following two scenarios only,
+
+while marking the referenced objects in the tenured generation space.
+if there is a change in heap memory in parallel while doing the garbage collection.
+In comparison with parallel garbage collector, CMS collector uses more CPU to ensure better application throughput. If we can allocate more CPU for better performance then CMS garbage collector is the preferred choice over the parallel collector.
+
+Turn on the XX:+USeParNewGC JVM argument to use the CMS garbage collector.
+
+What is a Memory Leak in Java?
+==============================
+The standard definition of a memory leak is a scenario that occurs when objects are no longer being used by the application, but the Garbage Collector is unable to remove them from working memory – because they’re still being referenced. As a result, the application consumes more and more resources – which eventually leads to a fatal OutOfMemoryError.
+
+Built-in Java Annotations:
+=========================
+Java comes with three built-in annotations which are used to give the Java compiler instructions. These annotations are:
+
+@Deprecated
+@Override
+
+Meta Annotation:
+===============
+The annotations which are used to define costume annotations are known as “Meta Annotation“. There are four annotation types in the “java.lang.annotation” package. These so-called meta-annotations are used to annotate other annotation types.
+@SuppressWarnings
