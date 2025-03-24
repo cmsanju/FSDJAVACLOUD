@@ -1,12 +1,12 @@
 <div class="card my-5">
   <div class="card-body">
-    <table class="table table-bordered table-striped">
+    <table class="table align-middle table-striped">
       <thead class="thead-dark">
         <tr>
           <th scope="col">ID</th>
           <th scope="col">Name</th>
           <th scope="col">Price</th>
-          <th scope="col">Actions</th>
+          <th scope="col" class="align-middle">Actions</th>
         </tr>
       </thead>
       <tbody>
@@ -14,15 +14,67 @@
           <td>{{ product.id }}</td>
           <td>{{ product.name }}</td>
           <td>{{ product.price }}</td>
-          <td>
+          <td class="align-middle">
             
             <button  (click)="deleteProduct(product.id)" class="btn btn-red" title="Delete">
-              <img src="https://www.svgrepo.com/show/422403/bin-delete-interface.svg" width="15" />
+              <img src="https://www.svgrepo.com/show/422403/bin-delete-interface.svg" width="25" />
           </button>
       
-          <button class="btn btn-primary" (click)="updateProduct(product.id)" title="Edit" data-toggle="modal" data-target="#myModal">
-            <img src="https://www.svgrepo.com/show/513500/pencil.svg" width="15" />
+          <button class="btn btn-red" (click)="open(mymodal)" title="Edit" data-toggle="modal" data-target="#myModal">
+            <img src="https://www.svgrepo.com/show/513500/pencil.svg" width="25" />
         </button>
+
+        <ng-template #mymodal let-modal>
+          <div class="modal-header">
+              <h4 class="modal-title" id="modal-basic-title">Edit</h4> &nbsp;&nbsp;
+              <button type="button" class="close" aria-label="Close"
+                  (click)="modal.dismiss('Cross click')">
+                  <span aria-hidden="true" (click)="cancel()">×</span>
+
+              </button>
+
+          </div>
+          <div>
+          <form>
+              <div class="form-group">
+
+                  <div class="row" class="col-md-5">
+                      <label for="id">ProductID</label>
+                      <input type="number" [(ngModel)]="product.id" [ngModelOptions]="{standalone : true}" readonly
+                      class="form-control"
+                       />
+                  </div>
+                  <div class="row" class="col-md-5">
+                      <label for="name">Product Name</label>
+                      <input type="text" [(ngModel)]="product.name" [ngModelOptions]="{standalone : true}" 
+                      class="form-control" 
+                      id="name" 
+                      name="name" 
+                      placeholder="Enter product name"
+                      required #name="ngModel" />
+                  </div>
+                  <div [hidden]="!name.pristine" class="alert alert-danger">Name is required</div>
+                  <div class="row" class="col-md-5">
+                      <label for="price">Price</label>
+                      <input type="number" [(ngModel)]="product.price" [ngModelOptions]="{standalone : true}"
+                      class="form-control" 
+                      id="price" 
+                      name="price" 
+                      placeholder="Enter product price"
+                      required #name="ngModel" />
+                  </div>
+                  <div [hidden]="!name.pristine" class="alert alert-danger">Price is required</div>
+              </div>
+
+              <div class="modal-footer">
+
+                  <button type="button" class="btn btn-info"
+                      (click)="modal.close('Save click')" (click)="cancel()">Cancel</button>
+                  <button class="btn btn-success"(click)="editProduct(product.id, product)" (click)="modal.close('Save click')">update</button>
+              </div>
+          </form>
+      </div>
+      </ng-template>
         <!--
         <button (click)="updateProduct(product.id)" class='btn btn-info'
                     data-toggle="modal" data-target="#myModal">Update</button> -->
@@ -30,48 +82,5 @@
         </tr>
       </tbody>
     </table>
-  </div>
-</div>
-
-<div class="modal" id="myModal">
-  <div class="modal-dialog">
-    <div class="modal-content">
-          <form [formGroup]="productupdateform" (ngSubmit)="updateProForm()">
-      <!-- Modal Header -->
-      <div class="modal-header">
-        <h4 class="modal-title" style="text-align: center">Update Product</h4>
-        
-      </div>
-      
-      <!-- Modal body -->
-      <div class="modal-body" *ngFor="let product of productlist " >
-          <div [hidden]="isupdated">
-
-              <input type="hidden" class="form-control"  formControlName="id" [(ngModel)]="product.id">
-                      <div class="form-group">
-                          <label for="name">Product Name</label>
-                          <input type="text" class="form-control"  formControlName="name" [(ngModel)]="product.name"  >
-                      </div>
-              
-                      <div class="form-group">
-                          <label for="price">Product Price</label>
-                          <input type="text" class="form-control" formControlName="price" [(ngModel)]="product.price">
-                      </div>
-                                 
-            </div>  
-            <div [hidden]="isupdated">
-                <h4>Product Details Updated!</h4>
-            </div>        
-              
-      </div>
-      
-      <!-- Modal footer -->
-      <div class="modal-footer" >
-        <button type="submit" class="btn btn-success" [hidden]="!isupdated">Update</button>
-        <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="changeisUpdate()">Close</button>
-      </div>
-      
-  </form>
-    </div>
   </div>
 </div>

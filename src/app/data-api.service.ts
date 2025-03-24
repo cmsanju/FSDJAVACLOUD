@@ -28,9 +28,10 @@ export class DataApiService {
   getProduct(id: number): Observable<Object> {
     return this.http.get(`${this.baseUrl}byid/${id}`);
   }
-
-  updateProduct(id: number, value: any): Observable<Object> {
-    return this.http.post(`${this.baseUrl}update/${id}`, value);
+  
+  updateProduct(id: number, prod: Product): Observable<Object> {
+    
+    return this.http.put(`${this.baseUrl}update/${id}`, prod);
   }
 
 }

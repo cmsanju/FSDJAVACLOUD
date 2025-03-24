@@ -4,6 +4,8 @@ import { DataApiService } from '../data-api.service';
 import { Product } from '../product';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Observable } from 'rxjs';
 //import 'rxjs/add/operator/map';
 //import * as DataTables from 'datatables.net';
 @Component({
@@ -24,7 +26,10 @@ export class ListDataComponent implements OnInit
   deleteMessage=false;
   productlist: any;
   isupdated = false; 
-  constructor(private productService:DataApiService)
+
+  form : boolean = false;
+   closeResult! : string;
+  constructor(private productService:DataApiService, private modalService:NgbModal)
   {
   }
 
@@ -33,8 +38,6 @@ export class ListDataComponent implements OnInit
       this.products = data;
   });
 }
-
-
 
 deleteProduct(id: number) {
   this.productService.deleteProduct(id)
@@ -49,8 +52,40 @@ deleteProduct(id: number) {
       error => console.log(error));
 }
 
-      
+editProduct(id: number, product : Product)
+{
+  this.productService.updateProduct(id,product).subscribe();
+  console.log(id);
+  console.log(product.id);
+  console.log(product.name);
+  console.log(product.price);
 
+}
+
+open(content: any) {
+  this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+    this.closeResult = `Closed with: ${result}`;
+  }, (reason) => {
+    this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+  });
+  }
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return  `with: ${reason}`;
+    }
+  }
+  closeForm(){
+
+  }
+  cancel(){
+    this.form = false;
+  }
+
+/*
       updateProduct(id: number){
         this.productService.getProduct(id)
           .subscribe(
@@ -102,6 +137,8 @@ deleteProduct(id: number) {
       changeisUpdate(){
         this.isupdated=false;
       }
+
+      */
 
   }
 
