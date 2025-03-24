@@ -18,20 +18,19 @@ export class DataApiService {
     return this.http.get<Product[]>(this.baseUrl+'listall');
   }
 
-  public save(user: Product) {
-    return this.http.post<Product>(this.baseUrl+'create', user);
+  public save(prod: Product) {
+    return this.http.post<Product>(this.baseUrl+'create', prod);
   }
 
-  deleteStudent(id: number): Observable<any> {
-    return this.http.delete(`${this.baseUrl}/delete/${id}`, { responseType: 'text' });
+  deleteProduct(id: number): Observable<any> {
+    return this.http.delete(`${this.baseUrl}delete/${id}`, { responseType: 'json' });
+  }
+  getProduct(id: number): Observable<Object> {
+    return this.http.get(`${this.baseUrl}byid/${id}`);
   }
 
-  getStudent(id: number): Observable<Object> {
-    return this.http.get(`${this.baseUrl}/byid/${id}`);
-  }
-
-  updateStudent(id: number, value: any): Observable<Object> {
-    return this.http.post(`${this.baseUrl}/update/${id}`, value);
+  updateProduct(id: number, value: any): Observable<Object> {
+    return this.http.post(`${this.baseUrl}update/${id}`, value);
   }
 
 }

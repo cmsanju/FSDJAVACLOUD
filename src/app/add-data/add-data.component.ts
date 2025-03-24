@@ -19,7 +19,6 @@ import { FormsModule } from '@angular/forms';
 })
 export class AddDataComponent {
   product: Product;
-
   constructor(
     private route: ActivatedRoute, 
       private router: Router, 
@@ -28,7 +27,8 @@ export class AddDataComponent {
   }
 
   onSubmit() {
-    this.productService.save(this.product).subscribe(result => this.gotoProductList());
+    this.productService.save(this.product)
+    .subscribe(result => this.gotoProductList());
   }
 
   gotoProductList() {

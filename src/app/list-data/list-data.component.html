@@ -3,9 +3,10 @@
     <table class="table table-bordered table-striped">
       <thead class="thead-dark">
         <tr>
-          <th scope="col">#</th>
+          <th scope="col">ID</th>
           <th scope="col">Name</th>
           <th scope="col">Price</th>
+          <th scope="col">Actions</th>
         </tr>
       </thead>
       <tbody>
@@ -13,8 +14,64 @@
           <td>{{ product.id }}</td>
           <td>{{ product.name }}</td>
           <td>{{ product.price }}</td>
+          <td>
+            
+            <button  (click)="deleteProduct(product.id)" class="btn btn-red" title="Delete">
+              <img src="https://www.svgrepo.com/show/422403/bin-delete-interface.svg" width="15" />
+          </button>
+      
+          <button class="btn btn-primary" (click)="updateProduct(product.id)" title="Edit" data-toggle="modal" data-target="#myModal">
+            <img src="https://www.svgrepo.com/show/513500/pencil.svg" width="15" />
+        </button>
+        <!--
+        <button (click)="updateProduct(product.id)" class='btn btn-info'
+                    data-toggle="modal" data-target="#myModal">Update</button> -->
+          </td>
         </tr>
       </tbody>
     </table>
+  </div>
+</div>
+
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+          <form [formGroup]="productupdateform" (ngSubmit)="updateProForm()">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title" style="text-align: center">Update Product</h4>
+        
+      </div>
+      
+      <!-- Modal body -->
+      <div class="modal-body" *ngFor="let product of productlist " >
+          <div [hidden]="isupdated">
+
+              <input type="hidden" class="form-control"  formControlName="id" [(ngModel)]="product.id">
+                      <div class="form-group">
+                          <label for="name">Product Name</label>
+                          <input type="text" class="form-control"  formControlName="name" [(ngModel)]="product.name"  >
+                      </div>
+              
+                      <div class="form-group">
+                          <label for="price">Product Price</label>
+                          <input type="text" class="form-control" formControlName="price" [(ngModel)]="product.price">
+                      </div>
+                                 
+            </div>  
+            <div [hidden]="isupdated">
+                <h4>Product Details Updated!</h4>
+            </div>        
+              
+      </div>
+      
+      <!-- Modal footer -->
+      <div class="modal-footer" >
+        <button type="submit" class="btn btn-success" [hidden]="!isupdated">Update</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="changeisUpdate()">Close</button>
+      </div>
+      
+  </form>
+    </div>
   </div>
 </div>
