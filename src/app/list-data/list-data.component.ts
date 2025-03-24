@@ -84,61 +84,6 @@ open(content: any) {
   cancel(){
     this.form = false;
   }
-
-/*
-      updateProduct(id: number){
-        this.productService.getProduct(id)
-          .subscribe(
-            data => {
-              this.productlist=data;         
-            },
-            error => console.log(error));
-      }
-    
-      productupdateform=new FormGroup({
-        id:new FormControl(),
-        name:new FormControl(),
-        price:new FormControl(),
-        
-      });
-    
-      updateProForm(){
-        this.product=new Product(); 
-       this.product.id = this.ProductId?.value;
-       this.product.name = this.ProductName?.value;
-       this.product.price = this.ProductPrice?.value;
-       
-       console.log(this.ProductName?.value);
-       
-    
-       this.productService.updateProduct(this.product.id,this.product).subscribe(
-        data => {     
-          this.isupdated=true;
-          this.productService.findAll().subscribe(data =>{
-            this.products =data
-            })
-        },
-        error => console.log(error));
-      }
-    
-    
-      get ProductName(){
-        return this.productupdateform.get('name');
-      }
-    
-      get ProductPrice(){
-        return this.productupdateform.get('price');
-      }
-    
-      get ProductId(){
-        return this.productupdateform.get('id');
-      }
-    
-      changeisUpdate(){
-        this.isupdated=false;
-      }
-
-      */
-
-  }
+  
+}
 
