@@ -23,15 +23,18 @@ export class DataApiService {
   }
 
   deleteProduct(id: number): Observable<any> {
-    return this.http.delete(`${this.baseUrl}delete/${id}`, { responseType: 'json' });
+    return this.http.delete(`${this.baseUrl}delete/${id}`, 
+      { responseType: 'json' });
   }
-  getProduct(id: number): Observable<Object> {
-    return this.http.get(`${this.baseUrl}byid/${id}`);
-  }
-  
+
   updateProduct(id: number, prod: Product): Observable<Object> {
     
-    return this.http.put(`${this.baseUrl}update/${id}`, prod);
+    return this.http.put(`${this.baseUrl}update/${id}`, 
+      prod);
+  }
+
+  getProduct(id: number): Observable<Object> {
+    return this.http.get(`${this.baseUrl}byid/${id}`);
   }
 
 }

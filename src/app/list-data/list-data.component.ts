@@ -24,11 +24,10 @@ export class ListDataComponent implements OnInit
   products: Product[];
   product:Product = new Product();
   deleteMessage=false;
-  productlist: any;
-  isupdated = false; 
 
   form : boolean = false;
    closeResult! : string;
+
   constructor(private productService:DataApiService, private modalService:NgbModal)
   {
   }
@@ -55,24 +54,23 @@ deleteProduct(id: number) {
 editProduct(id: number, product : Product)
 {
   this.productService.updateProduct(id,product).subscribe();
-  console.log(id);
-  console.log(product.id);
-  console.log(product.name);
-  console.log(product.price);
 
 }
 
 open(content: any) {
-  this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+  this.modalService.open(content, {ariaLabelledBy: 
+    'modal-basic-title'}).result.then((result) => {
     this.closeResult = `Closed with: ${result}`;
   }, (reason) => {
     this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
   });
   }
+  
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
       return 'by pressing ESC';
-    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+    } else if (reason === 
+      ModalDismissReasons.BACKDROP_CLICK) {
       return 'by clicking on a backdrop';
     } else {
       return  `with: ${reason}`;
